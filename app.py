@@ -1,5 +1,7 @@
 # Import libraries
 from colored import Fore, Back, Style
+from classes.user import User
+from functions.functions import create_new_user
 
 color: str = f"{Style.BOLD}{Back.GREEN}"
 
@@ -36,7 +38,11 @@ while choice != "9":
     # Match block to handle choices
     match choice:
         case "1":
-            print("1. Create an account")
+            # All user to input name and their balance
+            # Send these to the class to create a new user instance
+            create_new_user()
+            # Pause to see what they wish to do next
+            choice = input("\nWhat would you like to do next? ")
         case "2":
             print("2. Add income")
         case "3":
@@ -54,7 +60,7 @@ while choice != "9":
         case "9":
             print("Goodbye meat bag...")
         case _:
-            print("Incorrect selection")
+            print("Incorrect selection, try again.")
 
 # Goodbye 
 print("\nThank you for choosing this shitty app.\n")
