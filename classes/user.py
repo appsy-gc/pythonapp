@@ -4,4 +4,5 @@ class User:
         self.balance = balance
 
     def __str__(self):
-        return f"\nWelcome {self.name}, thanks for creating an account and adding ${self.balance} to it.\n"
+        return f"\nWelcome {self.name}, thanks for creating an account and adding ${self.balance:,.2f} to it.\n"
+    

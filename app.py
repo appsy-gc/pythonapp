@@ -3,12 +3,13 @@ from colored import Fore, Back, Style
 from classes.user import User
 from functions.functions import create_new_user
 
-color: str = f"{Style.BOLD}{Back.GREEN}"
+color1: str = f"{Style.BOLD}{Back.GREEN}"
+color2: str = f"{Style.BOLD}{Fore.RED}"
 
 # Create welcome message
 def create_menu():
-    print(f"\n{color}Welcome to your personal budgeting App.")
-    print(f"{color}Here are your options: {Style.reset}\n")
+    print(f"\n{color1}Welcome to your personal budgeting App.{Style.reset}")
+    print(f"{color1}Here are your options:{Style.reset}\n")
 
     # Build user interface
     print("1. Create an account")
@@ -17,12 +18,12 @@ def create_menu():
     print("4. Add an expense")
     print("5. Check a budget\n")
 
-    print(f"{color}<<< ADVANCED OPTIONS FOR PRO USERS >>>{Style.reset}\n")
+    print(f"{color1}<<< ADVANCED OPTIONS FOR PRO USERS >>>{Style.reset}\n")
 
     print("6. Import financial information with a csv file")
     print("7. Print financial graph\n")
 
-    print(f"{color}<<< Other Options >>>{Style.reset}\n")
+    print(f"{color1}<<< Other Options >>>{Style.reset}\n")
 
     print("8. Upgrade to PRO")
     print("9. Quit the app\n")
@@ -38,10 +39,9 @@ while choice != "9":
     # Match block to handle choices
     match choice:
         case "1":
-            # All user to input name and their balance
-            # Send these to the class to create a new user instance
+            # Function to get user input and creates instance of User class
             create_new_user()
-            # Pause to see what they wish to do next
+            # Pause to get option selection again from user
             choice = input("\nWhat would you like to do next? ")
         case "2":
             print("2. Add income")
@@ -60,7 +60,7 @@ while choice != "9":
         case "9":
             print("Goodbye meat bag...")
         case _:
-            print("Incorrect selection, try again.")
+            print(f"{color2}Incorrect selection, try again.{Style.reset}")
 
 # Goodbye 
 print("\nThank you for choosing this shitty app.\n")
