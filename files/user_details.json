@@ -1,14 +1,27 @@
 [
     {
+        "pro_account": false,
         "name": "",
         "balance": 0
     },
     {
+        "pro_account": false,
         "name": "Chris Apps",
         "balance": 1000.0
     },
     {
+        "pro_account": false,
         "name": "John Black",
         "balance": 20000000.0
+    },
+    {
+        "pro_account": false,
+        "name": "Luke Skywalker",
+        "balance": 2000.0
+    },
+    {
+        "pro_account": false,
+        "name": "Bum Fukka",
+        "balance": 200.0
     }
 ]

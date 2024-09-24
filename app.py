@@ -46,7 +46,7 @@ while choice != "9":
         case "2":
             print("2. Add income")
         case "3":
-            print("3. Set or change a budget")
+            print("3. Set a budget")
         case "4":
             print("4. Add an expense")
         case "5":
