@@ -1,5 +1,6 @@
 from colored import Fore, Back, Style
 from classes.user import User
+from classes.transactions import Income, Expense
 import json
 
 color2: str = f"{Style.BOLD}{Fore.RED}"
@@ -47,13 +48,17 @@ def create_new_user():
         with open("files/user_details.json", "w") as file:
             json.dump(data, file, indent=4)
         
-        return print(new_user)
+        return name
         
 def add_income():
-    pass
+    income = float(input("Please enter your income: "))
+    new_income = Income(income)
+    return print(new_income)
 
 def add_expense():
-    pass
+    expense = float(input("Please enter an expense: "))
+    new_expense = Expense(expense)
+    return print(new_expense)
 
 def add_budget():
     pass

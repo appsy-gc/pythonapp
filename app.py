@@ -1,7 +1,7 @@
 # Import libraries
 from colored import Fore, Back, Style
 from classes.user import User
-from functions.functions import create_new_user
+from functions.functions import create_new_user, add_income, add_expense
 
 color1: str = f"{Style.BOLD}{Back.GREEN}"
 color2: str = f"{Style.BOLD}{Fore.RED}"
@@ -44,11 +44,15 @@ while choice != "9":
             # Pause to get option selection again from user
             choice = input("\nWhat would you like to do next? ")
         case "2":
-            print("2. Add income")
+            add_income()
+            # Pause to get option selection again from user
+            choice = input("\nWhat would you like to do next? ")
         case "3":
             print("3. Set a budget")
         case "4":
-            print("4. Add an expense")
+            add_expense()
+            # Pause to get option selection again from user
+            choice = input("\nWhat would you like to do next? ")
         case "5":
             print("5. Check a budget")
         case "6":
