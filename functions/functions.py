@@ -3,6 +3,7 @@ from classes.user import User
 from classes.transactions import Income, Expense
 import json
 
+color1: str = f"{Style.BOLD}{Back.GREEN}"
 color2: str = f"{Style.BOLD}{Fore.RED}"
 
 def check_user_availability():
@@ -61,6 +62,40 @@ def add_expense():
     return print(new_expense)
 
 def add_budget():
-    pass
+    # Set up the menu for category selection
+    print(f"{color1}To set up a budget, please choose one of the following categories.{Style.reset}\n")
+    print("1. Food")
+    print("2. Vehicle Costs")
+    print("3. Bills")
+    print("4. Subscriptions")
+    print("5. Entertainment and games")
+    print("6. Education\n")
+    print(f"{color2}Note:{Style.reset} You can only choose one category for a free account. \nUpgrade back at the main menu to choose more.\n")
+    # Get selection from user and set variables
+    budget_category_selection = int(input("Please enter a number to choose your desired category: "))
+    # Match case for selection handling
+    match budget_category_selection:
+        case 1:
+            budget_category = "Food"
+        case 2:
+            budget_category = "Vehicle Costs"
+        case 3:
+            budget_category = "Bills"
+        case 4:
+            budget_category = "Subscriptions"
+        case 5:
+            budget_category = "Entertainment and games"
+        case 6:
+            budget_category = "Education"
+        case _:
+            print(f"\n{color2}Incorrect selection{Style.reset} - try again.\n")
+            budget_category = int(input("Please enter a number to choose your desired category: "))
+    # Set limit for budget
+    budget_amount = float(input("What limit would you like to set for this budget per week? "))
+    print(f"\n${budget_amount:,.2f} set as your limit for {budget_category}")
+
+    return {"b_category": budget_category, "b_amount": budget_amount}
+
+
 
     
