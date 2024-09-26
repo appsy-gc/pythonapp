@@ -18,48 +18,48 @@ def create_new_user():
 
     # Error handling to ensure they enter their first and last name
     name = input("\nPlease enter your first and last name: ").strip()
-    while len(name.split()) != 2:
-        name = input(f"{color2}Invalid:{Style.reset} Please enter your first and last name separated by a space: ")
+    while len(name.split()) != 2 or name.lower() in check_user_availability():
+        name = input(f"{color2}Invalid: You did not enter a first and last name or your name already exists.{Style.reset}\nPlease enter your first and last name separated by a space: ")
     
     # Ensure they entered a unique name
-    if name.lower() in check_user_availability():
-        print(f"{color2}Name in use, choose another!{Style.reset}")
+    # if name.lower() in check_user_availability():
+    #    print(f"{color2}Name in use, choose another! {Style.reset}\n")
+    #    name = input("Please enter your first and last name separated by a space: ")
+    # else:
+    try:
+        # Error handling to ensure they enter a positive and correct balance
+        balance = float(input("Please enter your current bank account balance: "))
+    except ValueError:
+        balance = float(input(f"{color2}Invalid: {Style.reset}Please enter your current balance in numbers only: "))
 
-    else:
-        try:
-            # Error handling to ensure they enter a positive and correct balance
-            balance = float(input("Please enter your current bank account balance: "))
-        except ValueError:
-            balance = float(input(f"{color2}Invalid: {Style.reset}Please enter your current balance in numbers only: "))
+    # Create new instance of user
+    new_user = User(name, balance)
+    new_user_data = {"pro_sub": False, "name": name, "balance": balance}
 
-        # Create new instance of user
-        new_user = User(name, balance)
-        # Convert to list to append to json file
-        new_user_list = {"pro_account": False, "name": name, "balance": balance}
+    # Commit changes to json
+    try:
+        with open("files/user_details.json") as file:
+            data = json.load(file)
+    except FileNotFoundError:
+        data = []
+    data.append(new_user_data)
+    with open("files/user_details.json", "w") as file:
+        json.dump(data, file, indent=4)
+
+    return print(new_user)
         
-        # Open json to read
-        try:
-            with open("files/user_details.json", "r") as file:
-                data = json.load(file)
-        except FileNotFoundError:
-            data = [{"pro_account": False, "name": "", "balance": 0}]
-        # Add new user details
-        data.append(new_user_list)
-        # Update json file
-        with open("files/user_details.json", "w") as file:
-            json.dump(data, file, indent=4)
-        
-        return name
-        
+
 def add_income():
     income = float(input("Please enter your income: "))
     new_income = Income(income)
     return print(new_income)
 
+
 def add_expense():
     expense = float(input("Please enter an expense: "))
     new_expense = Expense(expense)
     return print(new_expense)
+
 
 def add_budget():
     # Set up the menu for category selection
@@ -97,5 +97,27 @@ def add_budget():
     return {"b_category": budget_category, "b_amount": budget_amount}
 
 
+# def save_data(user_data, budget_data):
+#     try:
+#         with open("files/user_details.json", "r") as file:
+#             data = json.load(file)
+#     except FileNotFoundError:
+#         data = []  # Initialize an empty list if the file doesn't exist
 
-    
+#     # New data to append
+#     new_data = {
+#         "pro_account": False,
+#         "name": user_data["name"], 
+#         "balance": user_data["balance"], 
+#         "b_category": budget_data["b_category"], 
+#         "b_amount": budget_data["b_amount"]
+#     }
+
+#     # Append new data to the list
+#     data.append(new_data)
+
+#     # Write back to the JSON file
+#     with open("files/user_details.json", "w") as file:
+#         json.dump(data, file, indent=4)
+
+#     print("Saved. Goodbye")

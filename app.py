@@ -26,10 +26,12 @@ def create_menu():
     print(f"{color1}<<< Other Options >>>{Style.reset}\n")
 
     print("8. Upgrade to PRO")
-    print("9. Quit the app\n")
+    print("9. Save and quit the app\n")
 
     choice = input("Select an option to get started: ")
     return choice
+
+choice = ""
 
 choice = ""
 
@@ -39,8 +41,8 @@ while choice != "9":
     # Match block to handle choices
     match choice:
         case "1":
-            # Function to get user input and creates instance of User class
-            create_new_user()
+            # Function to get user input and create instance of User class
+            user_data = create_new_user()
             # Pause to get option selection again from user
             choice = input("\nWhat would you like to do next? ")
         case "2":
@@ -48,7 +50,8 @@ while choice != "9":
             # Pause to get option selection again from user
             choice = input("\nWhat would you like to do next? ")
         case "3":
-            add_budget()
+            budget_data = add_budget()
+            print(f"Budget set for {budget_data['b_category']}.")
             # Pause to get option selection again from user
             choice = input("\nWhat would you like to do next? ")
         case "4":
@@ -64,7 +67,7 @@ while choice != "9":
         case "8":
             print("8. Upgrade to PRO")
         case "9":
-            print("Goodbye meat bag...")
+            print("See ya loooooser")
         case _:
             print(f"{color2}Incorrect selection, try again.{Style.reset}")
 

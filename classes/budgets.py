@@ -4,4 +4,4 @@ class Budget:
         self.budget_amount = budget_amount
 
     def __str__(self):
-        return f"You have set up a {self.budget_category} budget for {self.budget_amount}."
+        return {"b_category": self.budget_category, "b_amount": self.budget_amount}

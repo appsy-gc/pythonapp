@@ -1,6 +1,5 @@
 class User:
     def __init__(self, name, balance):
-        self.pro_account = False
         self.name = name
         self.balance = balance
 
